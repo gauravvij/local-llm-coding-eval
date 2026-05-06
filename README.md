@@ -171,5 +171,5 @@ See [`results/evaluation_report.md`](results/evaluation_report.md) for per-model
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by <a href="https://heyneo.com">Neo</a></sub>
+  <sub>Built with ❤️ by <a href="https://heyneo.com">Neo</a> AI Engineer Agent</sub>
 </div>
