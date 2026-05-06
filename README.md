@@ -48,6 +48,8 @@ All evaluations run locally through [Ollama](https://ollama.com) — no API keys
 | **qwen3-coder:30b** | 80.0% | 76.92% | 69.23% | 80.0% |
 | **deepseek-coder:33b** | **90.0%** | 84.62% | 69.23% | 10.0% |
 
+![Model Performance Across All Benchmarks](images/chart_all_metrics.png)
+
 ### Rankings
 
 **Code Generation**
@@ -70,6 +72,8 @@ All evaluations run locally through [Ollama](https://ollama.com) — no API keys
 - **Best code generator:** `deepseek-coder:33b` — 90% code gen accuracy, but struggles badly on multi-step agent tasks (10%)
 - **Best balanced performance:** `qwen3-coder:30b` — solid across all three evaluation dimensions
 - **Best for agentic systems:** `qwen3.6:27b` or `qwen3.6:35b-a3b` — both hit 100% agent accuracy with strong tool calling
+
+![Agent Task Accuracy — 10 Multi-Step Tasks](images/chart_agent_spotlight.png)
 
 ---
 
