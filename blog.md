@@ -60,7 +60,7 @@ This is the most revealing benchmark for anyone building an agentic system.
 
 qwen3.6:27b and qwen3.6:35b-a3b both scored 100% on answer accuracy across 10 multi-step tasks. qwen3-coder:30b scored 80%. deepseek-coder:33b scored 10%.
 
-That last number is not a typo. deepseek-coder:33b, despite being the best pure code generator in this evaluation, essentially cannot do multi-step agentic reasoning. It got 1 out of 10 tasks correct. This is a known characteristic of models that are heavily fine-tuned for code completion: they optimize for producing syntactically correct code given a clear prompt, but they struggle when the task requires planning across multiple steps, maintaining state, and reasoning about intermediate outputs.
+That last number is not a typo, and it is not an evaluation harness issue. Every model ran against identical prompts, identical scoring logic, and identical timeouts. deepseek-coder:33b scored 90% on code generation — the highest of any model — which confirms the harness was working correctly for it. The 10% agent score reflects a genuine capability gap. This is a known characteristic of models that are heavily fine-tuned for code completion: they optimize for producing syntactically correct code given a clear prompt, but they struggle when the task requires planning across multiple steps, maintaining state, and reasoning about intermediate outputs.
 
 Both qwen3.6 models hit 100% answer accuracy across all 10 multi-step tasks, demonstrating strong agent capabilities.
 
