@@ -3,7 +3,6 @@
   "total_tasks": 10,
   "correct_answers": 1,
   "answer_accuracy": 0.1,
-  "avg_reasoning_score": 1.8,
   "avg_plan_score": 0.14166666666666666,
   "results": [
     {
@@ -18,7 +17,6 @@
         "add tax to total"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 2,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 40.94257116317749,
@@ -34,7 +32,6 @@
         "divide distance by time"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 2,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 40.861764669418335,
@@ -60,7 +57,6 @@
         "r is the annual interest rate (in decimal form).",
         "n is the number of times that interest is compounded per year.\n\nSo for Option B: \nA = P(1 + 0.048/4)^(4*2) = 500 * (1 + 0.048/4)^8 = $637.98\n\nBoth options give the same amount of money after two years, so there is no difference in total return between Option A and Option B."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 0.75,
       "final_answer_correct": true,
       "response_time": 74.04138040542603,
@@ -77,7 +73,6 @@
         "subtract garden area from total"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 2,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 21.685107707977295,
@@ -92,7 +87,6 @@
         "divide by new number of workers"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 1,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 43.49146056175232,
@@ -108,7 +102,6 @@
         "solve for original volume"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 2,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 39.697757720947266,
@@ -124,7 +117,6 @@
         "sum durations"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 1,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 20.05238652229309,
@@ -141,7 +133,6 @@
         "divide total distance by total time"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 1,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 35.69438672065735,
@@ -165,7 +156,6 @@
         "Remove these nodes from the graph, and repeat step 1 until all nodes are removed.",
         "The number of passes through the queue is the length of the longest path.\n\nIn our case, we start by adding Task 1 (since it has no dependencies) to the queue. Then, we remove Task 1 from the graph, which means that Task 2 and Task 3 are now ready to be worked on. We add them to the queue. After this step, the longest path is of length 5:\n\nTask 1 -> Task 2 -> Task 4 -> Task 5 (3 days)\nTask 1 -> Task 3 -> Task 4 -> Task 5 (4 days)\n\nSo, the minimum time to complete the project is 5 days."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 0.6666666666666666,
       "final_answer_correct": false,
       "response_time": 81.23251748085022,
@@ -181,7 +171,6 @@
         "find optimal solution"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 1,
       "plan_correctness": 0.0,
       "final_answer_correct": false,
       "response_time": 86.60852026939392,

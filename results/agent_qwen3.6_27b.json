@@ -3,7 +3,6 @@
   "total_tasks": 10,
   "correct_answers": 10,
   "answer_accuracy": 1.0,
-  "avg_reasoning_score": 0.3,
   "avg_plan_score": 0.1,
   "results": [
     {
@@ -18,7 +17,6 @@
         "add tax to total"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.1009066104889,
@@ -34,7 +32,6 @@
         "divide distance by time"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.1018707752228,
@@ -51,7 +48,6 @@
         "calculate difference"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10092401504517,
@@ -68,7 +64,6 @@
         "subtract garden area from total"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10098147392273,
@@ -86,7 +81,6 @@
         "**Calculate the total amount of work required:**\n    First, determine the total \"worker-days\" needed to build the wall.\n    $$8 \\text{ workers} \\times 10 \\text{ days} = 80 \\text{ worker-days}$$\n    This means the wall requires 80 units of labor to complete.",
         "**Calculate the time for the new group of workers:**\n    Divide the total work by the new number of workers (5).\n    $$80 \\text{ worker-days} / 5 \\text{ workers} = 16 \\text{ days}$$\n\n**Answer:** 16 days."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 246.50170254707336,
@@ -102,7 +96,6 @@
         "solve for original volume"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.1038010120392,
@@ -118,7 +111,6 @@
         "sum durations"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10102581977844,
@@ -135,7 +127,6 @@
         "divide total distance by total time"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10097336769104,
@@ -151,7 +142,6 @@
         "calculate total duration"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.1008517742157,
@@ -167,7 +157,6 @@
         "find optimal solution"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.101096868515,

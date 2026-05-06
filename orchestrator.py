@@ -178,8 +178,8 @@ class EvaluationOrchestrator:
             "",
             "### Overall Performance",
             "",
-            "| Model | Code Gen | Tool Select | Params | Agent Acc | Reasoning |",
-            "|-------|----------|-------------|--------|-----------|-----------|",
+            "| Model | Code Gen | Tool Select | Params | Agent Acc |",
+            "|-------|----------|-------------|--------|-----------|",
         ])
         
         # Build summary table
@@ -201,12 +201,10 @@ class EvaluationOrchestrator:
             # Agent
             agent_data = model_data.get("agent", {})
             agent_acc = agent_data.get("answer_accuracy", 0)
-            reasoning = agent_data.get("avg_reasoning_score", 0)
             agent_str = f"{agent_acc:.1%}" if agent_acc else "N/A"
-            reasoning_str = f"{reasoning:.1f}/3" if reasoning else "N/A"
             
             report_lines.append(
-                f"| {model:20s} | {code_str:8s} | {tool_str:11s} | {params_str:6s} | {agent_str:9s} | {reasoning_str:9s} |"
+                f"| {model:20s} | {code_str:8s} | {tool_str:11s} | {params_str:6s} | {agent_str:9s} |"
             )
         
         report_lines.extend([
@@ -274,12 +272,10 @@ class EvaluationOrchestrator:
                 total = agent_data.get("total_tasks", 0)
                 correct = agent_data.get("correct_answers", 0)
                 acc = agent_data.get("answer_accuracy", 0)
-                reasoning = agent_data.get("avg_reasoning_score", 0)
                 plan = agent_data.get("avg_plan_score", 0)
                 report_lines.extend([
                     f"- **Total Tasks:** {total}",
                     f"- **Correct Answers:** {correct}/{total} ({acc:.2%})",
-                    f"- **Avg Reasoning Score:** {reasoning:.2f}/3.0",
                     f"- **Avg Plan Score:** {plan:.2%}",
                     "",
                 ])

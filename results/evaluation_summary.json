@@ -346,7 +346,6 @@
         "total_tasks": 10,
         "correct_answers": 10,
         "answer_accuracy": 1.0,
-        "avg_reasoning_score": 0.3,
         "avg_plan_score": 0.1,
         "results": [
           {
@@ -361,7 +360,6 @@
               "add tax to total"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.1009066104889,
@@ -377,7 +375,6 @@
               "divide distance by time"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.1018707752228,
@@ -394,7 +391,6 @@
               "calculate difference"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.10092401504517,
@@ -411,7 +407,6 @@
               "subtract garden area from total"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.10098147392273,
@@ -429,7 +424,6 @@
               "**Calculate the total amount of work required:**\n    First, determine the total \"worker-days\" needed to build the wall.\n    $$8 \\text{ workers} \\times 10 \\text{ days} = 80 \\text{ worker-days}$$\n    This means the wall requires 80 units of labor to complete.",
               "**Calculate the time for the new group of workers:**\n    Divide the total work by the new number of workers (5).\n    $$80 \\text{ worker-days} / 5 \\text{ workers} = 16 \\text{ days}$$\n\n**Answer:** 16 days."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 246.50170254707336,
@@ -445,7 +439,6 @@
               "solve for original volume"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.1038010120392,
@@ -461,7 +454,6 @@
               "sum durations"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.10102581977844,
@@ -478,7 +470,6 @@
               "divide total distance by total time"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.10097336769104,
@@ -494,7 +485,6 @@
               "calculate total duration"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.1008517742157,
@@ -510,7 +500,6 @@
               "find optimal solution"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 0,
             "plan_correctness": 0.0,
             "final_answer_correct": true,
             "response_time": 300.101096868515,
@@ -858,7 +847,6 @@
         "total_tasks": 10,
         "correct_answers": 8,
         "answer_accuracy": 0.8,
-        "avg_reasoning_score": 2.8,
         "avg_plan_score": 0.9216666666666666,
         "results": [
           {
@@ -877,7 +865,6 @@
               "Apply the 20% discount\n- Discount amount: 20% of $230 = 0.20 \u00d7 $230 = $46\n- Price after discount: $230 - $46 = $184",
               "Add the 8% sales tax\n- Tax amount: 8% of $184 = 0.08 \u00d7 $184 = $14.72\n- Final total: $184 + $14.72 = $198.72\n\nLet me verify this calculation:\n- Original total: $230\n- After 20% discount: $230 \u00d7 0.80 = $184\n- After 8% tax: $184 \u00d7 1.08 = $198.72\n\nThe final total is $198.72."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.8,
             "final_answer_correct": true,
             "response_time": 13.09273076057434,
@@ -904,7 +891,6 @@
               "Total travel time = 2 + 3 = 5 hours (excluding the 30-minute stop)",
               "*Step 3: Calculate the average speed**\nAverage speed = Total distance \u00f7 Total travel time\nAverage speed = 300 km \u00f7 5 hours = 60 km/h\n\nTherefore, the average speed for the entire journey (excluding stop time) is 60 km/h."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 8.550304889678955,
@@ -942,7 +928,6 @@
               "*Difference:**\n$550.15 - $548.62 = $1.53",
               "*Final Answer:**\nOption B gives $1.53 more than Option A after 2 years."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.75,
             "final_answer_correct": true,
             "response_time": 21.314475297927856,
@@ -964,7 +949,6 @@
               "Find the area of the entire region (garden + path)\n- Area of entire region = 17 \u00d7 10 = 170 square meters",
               "Calculate the area of just the path\n- Area of path = Area of entire region - Area of garden\n- Area of path = 170 - 120 = 50 square meters\n\nLet me verify this by calculating the path area another way:\n- The path forms a border around the garden\n- I can think of this as four rectangles plus four corner squares\n- Two longer rectangles: 15 \u00d7 1 = 15 square meters each (two sides)\n- Two shorter rectangles: 8 \u00d7 1 = 8 square meters each (two sides)\n- Four corner squares: 1 \u00d7 1 = 1 square meter each (four corners)\n- Total path area = 2(15) + 2(8) + 4(1) = 30 + 16 + 4 = 50 square meters \u2713\n\nThe area of the path only is 50 square meters."
             ],
-            "reasoning_quality": 2,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 18.82160472869873,
@@ -988,7 +972,6 @@
               "8 workers \u00d7 10 days = 80 worker-days total work",
               "5 workers \u00d7 16 days = 80 worker-days total work \u2713\n\nTherefore, it will take 5 workers 16 days to build the same wall.\n\nThe answer is 16 days."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 11.075731754302979,
@@ -1016,7 +999,6 @@
               "Original ratio: 15:10 = 3:2 \u2713",
               "After adding 5 liters of alcohol: 20:10 = 2:1 \u2713\n\nTherefore, the original volume of the mixture was 25 liters."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": false,
             "response_time": 16.363336324691772,
@@ -1062,7 +1044,6 @@
               "Task B: 3 hours (2-5) - must wait for A to complete",
               "Task C: 1 hour (5-6) - can run anytime, so runs after B completes\n\nMinimum time = 6 hours\n\nThe answer is 6 hours."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.6666666666666666,
             "final_answer_correct": true,
             "response_time": 32.930556297302246,
@@ -1094,7 +1075,6 @@
               "*Step 3: Calculate total time and average speed**\n\nTotal time for round trip = 2 hours + 3 hours = 5 hours\nTotal distance for round trip = 240 km\n\nAverage speed = Total distance \u00f7 Total time = 240 \u00f7 5 = 48 km/h",
               "*Step 4: Verify the answer**\n\nThe average speed is not simply the arithmetic mean of 60 and 40 (which would be 50 km/h), because the car spends more time traveling at the slower speed (3 hours vs 2 hours). This makes sense as the average should be closer to the slower speed.\n\nTherefore, the average speed for the entire round trip is **48 km/h**."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 15.160162925720215,
@@ -1154,7 +1134,6 @@
               "Day 10: Task 5 (Worker 1)\n\nActually, Task 4 can start on Day 8 (when both dependencies are met), and takes 2 days, finishing on Day 9.\nTask 5 starts on Day 10 and takes 1 day, finishing on Day 10.\n\nWait, I made an error. Task 4 starts on Day 8 and takes 2 days, so it finishes on Day 9.\nTask 5 starts on Day 10 and takes 1 day, finishing on Day 10.\n\nBut Task 4 can start when Task 2 (Day 5) and Task 3 (Day 7) both complete. So Task 4 starts on Day 8.\n\nThe minimum time is 10 days.",
               "*Final Answer: 10 days**"
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 61.01727652549744,
@@ -1183,7 +1162,6 @@
               "At (50, 0): Profit = 50(50) + 40(0) = $2,500",
               "At (44, 12): Profit = 50(44) + 40(12) = 2,200 + 480 = $2,680\n\n**Verification of constraints at (44, 12):**\n- Machine time: 2(44) + 12 = 88 + 12 = 100 \u2264 100 \u2713\n- Labor time: 3(44) + 4(12) = 132 + 48 = 180 \u2264 180 \u2713\n\nThe maximum profit is achieved at point (44, 12).\n\n**Maximum profit = $2,680**\n\nThe company should produce 44 units of product X and 12 units of product Y to achieve the maximum profit of $2,680."
             ],
-            "reasoning_quality": 2,
             "plan_correctness": 1.0,
             "final_answer_correct": false,
             "response_time": 43.48508858680725,
@@ -1531,7 +1509,6 @@
         "total_tasks": 10,
         "correct_answers": 1,
         "answer_accuracy": 0.1,
-        "avg_reasoning_score": 1.8,
         "avg_plan_score": 0.14166666666666666,
         "results": [
           {
@@ -1546,7 +1523,6 @@
               "add tax to total"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 2,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 40.94257116317749,
@@ -1562,7 +1538,6 @@
               "divide distance by time"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 2,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 40.861764669418335,
@@ -1588,7 +1563,6 @@
               "r is the annual interest rate (in decimal form).",
               "n is the number of times that interest is compounded per year.\n\nSo for Option B: \nA = P(1 + 0.048/4)^(4*2) = 500 * (1 + 0.048/4)^8 = $637.98\n\nBoth options give the same amount of money after two years, so there is no difference in total return between Option A and Option B."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.75,
             "final_answer_correct": true,
             "response_time": 74.04138040542603,
@@ -1605,7 +1579,6 @@
               "subtract garden area from total"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 2,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 21.685107707977295,
@@ -1620,7 +1593,6 @@
               "divide by new number of workers"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 1,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 43.49146056175232,
@@ -1636,7 +1608,6 @@
               "solve for original volume"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 2,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 39.697757720947266,
@@ -1652,7 +1623,6 @@
               "sum durations"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 1,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 20.05238652229309,
@@ -1669,7 +1639,6 @@
               "divide total distance by total time"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 1,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 35.69438672065735,
@@ -1693,7 +1662,6 @@
               "Remove these nodes from the graph, and repeat step 1 until all nodes are removed.",
               "The number of passes through the queue is the length of the longest path.\n\nIn our case, we start by adding Task 1 (since it has no dependencies) to the queue. Then, we remove Task 1 from the graph, which means that Task 2 and Task 3 are now ready to be worked on. We add them to the queue. After this step, the longest path is of length 5:\n\nTask 1 -> Task 2 -> Task 4 -> Task 5 (3 days)\nTask 1 -> Task 3 -> Task 4 -> Task 5 (4 days)\n\nSo, the minimum time to complete the project is 5 days."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.6666666666666666,
             "final_answer_correct": false,
             "response_time": 81.23251748085022,
@@ -1709,7 +1677,6 @@
               "find optimal solution"
             ],
             "predicted_steps": [],
-            "reasoning_quality": 1,
             "plan_correctness": 0.0,
             "final_answer_correct": false,
             "response_time": 86.60852026939392,
@@ -2057,7 +2024,6 @@
         "total_tasks": 10,
         "correct_answers": 7,
         "answer_accuracy": 0.7,
-        "avg_reasoning_score": 2.8,
         "avg_plan_score": 0.8883333333333333,
         "results": [
           {
@@ -2076,7 +2042,6 @@
               "Apply the 20% discount\n- Discount amount: 20% of $230 = 0.20 \u00d7 $230 = $46\n- Price after discount: $230 - $46 = $184",
               "Add the 8% sales tax\n- Tax amount: 8% of $184 = 0.08 \u00d7 $184 = $14.72\n- Final total: $184 + $14.72 = $198.72\n\nLet me verify this calculation:\n- Original total: $230\n- After 20% discount: $230 \u00d7 0.80 = $184\n- After 8% tax: $184 \u00d7 1.08 = $198.72\n\nThe final total is $198.72."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.8,
             "final_answer_correct": true,
             "response_time": 12.039837837219238,
@@ -2103,7 +2068,6 @@
               "Total travel time = 2 + 3 = 5 hours (excluding the 30-minute stop)",
               "*Step 3: Calculate the average speed**\nAverage speed = Total distance \u00f7 Total travel time\nAverage speed = 300 km \u00f7 5 hours = 60 km/h\n\nTherefore, the average speed for the entire journey (excluding stop time) is 60 km/h."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 9.062338590621948,
@@ -2140,7 +2104,6 @@
               "Option B after 2 years: $550.15\n\nOption B gives more money after 2 years.\n\nDifference = $550.15 - $548.62 = $1.53",
               "*Final Answer:**\nOption B gives $1.53 more than Option A after 2 years."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.75,
             "final_answer_correct": true,
             "response_time": 20.616356372833252,
@@ -2177,7 +2140,6 @@
               "Corner pieces: 4 \u00d7 (1 \u00d7 1) = 4 square meters",
               "Total path area: 30 + 16 + 4 = 50 square meters \u2713\n\nThe area of the path only is 50 square meters."
             ],
-            "reasoning_quality": 2,
             "plan_correctness": 1.0,
             "final_answer_correct": false,
             "response_time": 16.060715436935425,
@@ -2198,7 +2160,6 @@
               "8 workers \u00d7 10 days = 80 worker-days total work",
               "5 workers \u00d7 16 days = 80 worker-days total work \u2713\n\nTherefore, it will take 5 workers 16 days to build the same wall.\n\nThe answer is 16 days."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 12.010927438735962,
@@ -2226,7 +2187,6 @@
               "Original ratio: 15:10 = 3:2 \u2713",
               "After adding 5 liters of alcohol: 20:10 = 2:1 \u2713\n\nTherefore, the original volume of the mixture was 25 liters."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": false,
             "response_time": 17.792837381362915,
@@ -2263,7 +2223,6 @@
               "The critical path is A \u2192 B, which takes 2 + 3 = 5 hours",
               "Task C can be scheduled during the gap or after Task A, adding 1 more hour total\n\nFinal Answer: 6 hours"
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 0.3333333333333333,
             "final_answer_correct": true,
             "response_time": 21.55430245399475,
@@ -2295,7 +2254,6 @@
               "*Step 3: Calculate total time and average speed**\n\nTotal time for round trip = 2 hours + 3 hours = 5 hours\nTotal distance for round trip = 240 km\n\nAverage speed = Total distance \u00f7 Total time = 240 \u00f7 5 = 48 km/h",
               "*Step 4: Verify the answer**\n\nThe average speed is not simply the arithmetic mean of 60 and 40 (which would be 50 km/h), because the car spends more time traveling at the slower speed (3 hours vs 2 hours). This makes sense as the average should be closer to the slower speed.\n\nTherefore, the average speed for the entire round trip is **48 km/h**."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 16.00134515762329,
@@ -2315,7 +2273,6 @@
               "Analyze parallel execution opportunities\n- Task 1 must be done first (3 days)\n- After Task 1, Tasks 2 and 3 can run in parallel\n- Task 4 can only start when both Task 2 and Task 3 are complete\n- Task 5 starts after Task 4 completes",
               "Create the schedule\n\nDay 1-3: Task 1 (3 days) - Worker 1 works on Task 1\nDay 1-3: Task 2 (2 days) - Worker 2 works on Task 2 (but Task 2 can't start until Task 1 is done)\n\nWait, let me reconsider the dependencies more carefully:\n\nDay 1-3: Task 1 (3 days) - Both workers work on Task 1 (but Task 1 only needs 3 days total)\nDay 4-5: Task 2 (2 days) - Worker 1 works on Task 2 (Task 2 starts after Task 1)\nDay 4-7: Task 3 (4 days) - Worker 2 works on Task 3 (Task 3 starts after Task 1)\nDay 8-9: Task 4 (2 days) - Worker 1 works on Task 4 (Task 4 starts after both Task 2 and Task 3 complete)\nDay 10: Task 5 (1 day) - Worker 2 works on Task 5 (Task 5 starts after Task 4 completes)\n\nActually, let me be more precise about the scheduling:\n\nDay 1-3: Task 1 (3 days) - Both workers work on Task 1\nDay 4-5: Task 2 (2 days) - Worker 1 works on Task 2 (Task 2 starts on day 4)\nDay 4-7: Task 3 (4 days) - Worker 2 works on Task 3 (Task 3 starts on day 4)\nDay 8-9: Task 4 (2 days) - Worker 1 works on Task 4 (Task 4 starts on day 8, when both Task 2 and Task 3 are done)\nDay 10: Task 5 (1 day) - Worker 2 works on Task 5 (Task 5 starts on day 10)\n\nLet me verify this is optimal by checking if we can do better:\n\nOptimal scheduling:\n- Day 1-3: Task 1 (Worker 1 and Worker 2 work on Task 1 - 3 days total)\n- Day 4-5: Task 2 (Worker 1 works on Task 2 - 2 days)\n- Day 4-7: Task 3 (Worker 2 works on Task 3 - 4 days)\n- Day 8-9: Task 4 (Worker 1 works on Task 4 - 2 days, starts when Task 2 and Task 3 both complete)\n- Day 10: Task 5 (Worker 2 works on Task 5 - 1 day, starts when Task 4 completes)\n\nThe project completes on day 10.\n\nLet me double-check by calculating the earliest completion times:\n- Task 1: completes day 3\n- Task 2: starts day 4, completes day 5\n- Task 3: starts day 4, completes day 7\n- Task 4: starts day 8 (when both Task 2 and Task 3 complete), completes day 9\n- Task 5: starts day 10, completes day 10\n\nThe minimum time to complete the project is 10 days.\n\nThe answer is 10 days."
             ],
-            "reasoning_quality": 3,
             "plan_correctness": 1.0,
             "final_answer_correct": true,
             "response_time": 45.72831630706787,
@@ -2348,7 +2305,6 @@
               "(44, 12): Profit = 50(44) + 40(12) = 2,200 + 480 = $2,680",
               "(50, 0): Profit = 50(50) + 40(0) = $2,500\n\nThe maximum profit is $2,680, achieved by producing 44 units of product X and 12 units of product Y.\n\n**Final Answer: $2,680**"
             ],
-            "reasoning_quality": 2,
             "plan_correctness": 1.0,
             "final_answer_correct": false,
             "response_time": 49.43821096420288,

@@ -3,7 +3,6 @@
   "total_tasks": 10,
   "correct_answers": 10,
   "answer_accuracy": 1.0,
-  "avg_reasoning_score": 1.8,
   "avg_plan_score": 0.7,
   "results": [
     {
@@ -23,7 +22,6 @@
         "**Calculate the 8% sales tax on the discounted price:** \n   Tax amount = $184 \u00d7 0.08 = **$14.72**",
         "**Add the tax to get the final total:** \n   $184 + $14.72 = **$198.72**\n\nThe final total is **$198.72**."
       ],
-      "reasoning_quality": 2,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 196.55732321739197,
@@ -49,7 +47,6 @@
         "*Step 3: Calculate the average speed.**\nThe formula for average speed is:\n$$ \\text{Average Speed} = \\frac{\\text{Total Distance}}{\\text{Total Time}} $$\n\nSubstituting our values:\n$$ \\text{Average Speed} = \\frac{300 \\text{ km}}{5 \\text{ hours}} $$\n$$ \\text{Average Speed} = 60 \\text{ km/h} $$",
         "*Answer:**\nThe average speed for the entire journey (excluding stop time) is **60 km/h**."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 156.80815076828003,
@@ -66,7 +63,6 @@
         "calculate difference"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.1007626056671,
@@ -93,7 +89,6 @@
         "Path area = Outer area \u2212 Garden area = 170 m\u00b2 \u2212 120 m\u00b2 = **50 m\u00b2**",
         "*Answer:** The area of the path is **50 square meters**."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 161.90001368522644,
@@ -112,7 +107,6 @@
         "*Step 2: Calculate the time required for the new number of workers.**\nNow that we know the total work is 80 worker-days, we divide this total by the new number of workers (5) to find out how many days it will take them.\n$$80 \\text{ worker-days} / 5 \\text{ workers} = 16 \\text{ days}$$",
         "*Answer:**\nIt will take **16 days** for 5 workers to build the same wall."
       ],
-      "reasoning_quality": 2,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 117.16162276268005,
@@ -140,7 +134,6 @@
         "After adding 5 L alcohol: Alcohol = 20 L, Water = 10 L. Ratio = 20:10 = 2:1 \u2705",
         "*Final Answer:**\nThe original volume of the mixture was **25 liters**."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 163.54802298545837,
@@ -161,7 +154,6 @@
         "**Account for dependencies**: Task B depends on Task A, meaning A must finish before B starts. Task C has no restrictions. This dependency only limits the *valid order* of execution (e.g., A\u2192B\u2192C, A\u2192C\u2192B, or C\u2192A\u2192B). It does not add or remove any time, since all tasks still need to be completed one after another.",
         "**Conclusion**: Because parallel execution is explicitly disallowed, the total time is fixed regardless of which valid order you choose. There's no way to reduce it below the sum of all task durations.\n\n**Final Answer**: 6 hours."
       ],
-      "reasoning_quality": 3,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 200.17016983032227,
@@ -192,7 +184,6 @@
         "Average Speed = 240 km \u00f7 5 hours = **48 km/h**\n\n\ud83d\udca1 *Quick Verification:* When traveling equal distances at two different speeds, the average speed is the **harmonic mean** of the speeds:  \n`2 \u00d7 (v\u2081 \u00d7 v\u2082) / (v\u2081 + v\u2082) = 2 \u00d7 (60 \u00d7 40) / (60 + 40) = 4800 / 100 = 48 km/h`",
         "*Final Answer:** The average speed for the entire round trip is **48 km/h**."
       ],
-      "reasoning_quality": 2,
       "plan_correctness": 1.0,
       "final_answer_correct": true,
       "response_time": 176.30399990081787,
@@ -208,7 +199,6 @@
         "calculate total duration"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10006165504456,
@@ -224,7 +214,6 @@
         "find optimal solution"
       ],
       "predicted_steps": [],
-      "reasoning_quality": 0,
       "plan_correctness": 0.0,
       "final_answer_correct": true,
       "response_time": 300.10128927230835,

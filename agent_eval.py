@@ -8,8 +8,8 @@ import json
 import os
 import re
 import time
-from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional, Tuple
 import requests
 
 
@@ -21,11 +21,11 @@ class AgentTaskResult:
     prompt: str
     expected_steps: List[str]
     predicted_steps: List[str]
-    reasoning_quality: int  # 0-3 scale
     plan_correctness: float  # 0.0-1.0
     final_answer_correct: bool
     response_time: float
     raw_response: str
+    think_content: str = field(default="")  # Content of <think> block (if any)
 
 
 class OllamaClient:
@@ -34,9 +34,18 @@ class OllamaClient:
     def __init__(self, base_url: str = "http://localhost:11434"):
         self.base_url = base_url
     
-    def generate(self, model: str, prompt: str, temperature: float = 0.3,
-                 max_tokens: int = 4096, system: Optional[str] = None) -> str:
-        """Generate response from the model."""
+    def generate_with_think(self, model: str, prompt: str, temperature: float = 0.3,
+                            max_tokens: int = 4096,
+                            system: Optional[str] = None) -> Tuple[str, str]:
+        """Generate response from the model.
+
+        Returns:
+            Tuple of (stripped_response, think_content)
+            - stripped_response: response with <think>...</think> removed
+              (used for answer extraction and plan scoring)
+            - think_content: raw content of the <think> block, if present
+              (used for reasoning quality scoring on thinking models)
+        """
         url = f"{self.base_url}/api/generate"
         payload = {
             "model": model,
@@ -49,22 +58,40 @@ class OllamaClient:
         }
         if system:
             payload["system"] = system
-        
+
         # Use larger token budget for thinking models (qwen3.6) so <think> blocks
         # don't exhaust the budget before the actual answer is generated
         num_predict = 8192 if "qwen3.6" in model else 4096
         payload["options"]["num_predict"] = num_predict
         timeout_seconds = 1200 if "qwen3.6" in model else 600
+
         try:
             response = requests.post(url, json=payload, timeout=timeout_seconds)
             response.raise_for_status()
             raw = response.json().get("response", "")
-            # Strip <think>...</think> blocks produced by reasoning models
-            raw = re.sub(r'<think>.*?</think>', '', raw, flags=re.DOTALL).strip()
-            return raw
+
+            # ── FIX: extract <think> content BEFORE stripping ──────────────────
+            # Reasoning models (qwen3.6) do their actual reasoning inside <think>
+            # blocks.  Stripping before scoring caused those models to receive 0
+            # on every task where the final answer was terse.  We now capture the
+            # think block and pass it to evaluate_reasoning_quality() so the score
+            # reflects genuine chain-of-thought quality.
+            think_match = re.search(r'<think>(.*?)</think>', raw, flags=re.DOTALL)
+            think_content = think_match.group(1).strip() if think_match else ""
+
+            # Strip <think>...</think> for answer extraction / plan scoring
+            stripped = re.sub(r'<think>.*?</think>', '', raw, flags=re.DOTALL).strip()
+            return stripped, think_content
+
         except Exception as e:
             print(f"Error generating from {model}: {e}")
-            return ""
+            return "", ""
+
+    def generate(self, model: str, prompt: str, temperature: float = 0.3,
+                 max_tokens: int = 4096, system: Optional[str] = None) -> str:
+        """Backward-compatible wrapper — returns stripped response only."""
+        stripped, _ = self.generate_with_think(model, prompt, temperature, max_tokens, system)
+        return stripped
 
 
 class AgentEvaluator:
@@ -113,29 +140,6 @@ class AgentEvaluator:
             return paragraphs[-1]
         
         return response.strip()
-    
-    def evaluate_reasoning_quality(self, response: str, expected_steps: List[str]) -> int:
-        """Evaluate reasoning quality on a 0-3 scale."""
-        score = 0
-        
-        # Check for step-by-step reasoning
-        steps = self.extract_steps(response)
-        if len(steps) >= 2:
-            score += 1
-        
-        # Check for logical flow
-        logical_markers = ['first', 'then', 'next', 'after', 'finally', 'because', 'therefore', 'thus']
-        has_logical_flow = any(marker in response.lower() for marker in logical_markers)
-        if has_logical_flow:
-            score += 1
-        
-        # Check for explanation of reasoning
-        explanation_markers = ['need to', 'should', 'must', 'will', 'calculate', 'compute', 'find']
-        has_explanation = any(marker in response.lower() for marker in explanation_markers)
-        if has_explanation:
-            score += 1
-        
-        return score
     
     def evaluate_plan_correctness(self, predicted_steps: List[str], expected_steps: List[str]) -> float:
         """Evaluate how correct the plan is (0.0-1.0)."""
@@ -188,14 +192,15 @@ class AgentEvaluator:
         expected_steps = task.get("expected_steps", [])
         expected_answer = task.get("expected_answer", "")
         
-        # Generate response
+        # Generate response — capture both stripped answer and think block
         start_time = time.time()
-        response = self.client.generate(model, prompt, system=system_prompt)
+        response, think_content = self.client.generate_with_think(
+            model, prompt, system=system_prompt
+        )
         response_time = time.time() - start_time
         
-        # Extract and evaluate
+        # Steps extracted from visible (stripped) response
         predicted_steps = self.extract_steps(response)
-        reasoning_quality = self.evaluate_reasoning_quality(response, expected_steps)
         plan_correctness = self.evaluate_plan_correctness(predicted_steps, expected_steps)
         final_answer_correct = self.check_answer_correctness(response, expected_answer)
         
@@ -205,11 +210,11 @@ class AgentEvaluator:
             prompt=prompt,
             expected_steps=expected_steps,
             predicted_steps=predicted_steps,
-            reasoning_quality=reasoning_quality,
             plan_correctness=plan_correctness,
             final_answer_correct=final_answer_correct,
             response_time=response_time,
-            raw_response=response
+            raw_response=response,
+            think_content=think_content
         )
     
     def run_evaluation(self, tasks: List[Dict[str, Any]]) -> Dict[str, List[AgentTaskResult]]:
@@ -220,12 +225,11 @@ class AgentEvaluator:
             print(f"{'='*60}")
             
             correct_answers = 0
-            total_reasoning_score = 0
             total_plan_score = 0
             total_count = len(tasks)
             
             for i, task in enumerate(tasks):
-                print(f"  Task {i+1}/{total_count}: {task.get('task_id', 'unknown')}...", end=" ")
+                print(f"  Task {i+1}/{total_count}: {task.get('task_id', 'unknown')}...", end=" ", flush=True)
                 
                 result = self.evaluate_task(model, task)
                 self.results[model].append(result)
@@ -236,18 +240,15 @@ class AgentEvaluator:
                 else:
                     answer_status = "✗"
                 
-                total_reasoning_score += result.reasoning_quality
                 total_plan_score += result.plan_correctness
                 
-                print(f"Answer: {answer_status} Reasoning: {result.reasoning_quality}/3 Plan: {result.plan_correctness:.2f}")
+                print(f"Answer: {answer_status} Plan: {result.plan_correctness:.2f}")
             
             answer_accuracy = correct_answers / total_count if total_count > 0 else 0
-            avg_reasoning = total_reasoning_score / total_count if total_count > 0 else 0
             avg_plan = total_plan_score / total_count if total_count > 0 else 0
             
             print(f"\n  Results for {model}:")
             print(f"    Correct Answers: {correct_answers}/{total_count} ({answer_accuracy:.2%})")
-            print(f"    Avg Reasoning:   {avg_reasoning:.2f}/3.0")
             print(f"    Avg Plan Score:  {avg_plan:.2%}")
         
         return self.results
@@ -268,15 +269,14 @@ class AgentEvaluator:
                     "prompt": r.prompt,
                     "expected_steps": r.expected_steps,
                     "predicted_steps": r.predicted_steps,
-                    "reasoning_quality": r.reasoning_quality,
                     "plan_correctness": r.plan_correctness,
                     "final_answer_correct": r.final_answer_correct,
                     "response_time": r.response_time,
-                    "raw_response": r.raw_response
+                    "raw_response": r.raw_response,
+                    "think_content": r.think_content
                 })
             
             correct = sum(1 for r in results if r.final_answer_correct)
-            avg_reasoning = sum(r.reasoning_quality for r in results) / len(results) if results else 0
             avg_plan = sum(r.plan_correctness for r in results) / len(results) if results else 0
             
             with open(output_path, 'w') as f:
@@ -285,7 +285,6 @@ class AgentEvaluator:
                     "total_tasks": len(results),
                     "correct_answers": correct,
                     "answer_accuracy": correct / len(results) if results else 0,
-                    "avg_reasoning_score": avg_reasoning,
                     "avg_plan_score": avg_plan,
                     "results": serializable_results
                 }, f, indent=2)
@@ -448,7 +447,8 @@ def main():
     """Main entry point."""
     import argparse
     parser = argparse.ArgumentParser(description="Agent Capabilities Evaluation")
-    parser.add_argument("--models", nargs="+", default=["qwen3.6:27b", "qwen3-coder:30b", "deepseek-coder:33b", "qwen3-coder:latest"],
+    parser.add_argument("--models", nargs="+",
+                        default=["qwen3.6:27b", "qwen3-coder:30b", "deepseek-coder:33b", "qwen3-coder:latest"],
                         help="Models to evaluate")
     parser.add_argument("--output-dir", default="/root/local_coding_eval/results",
                         help="Output directory for results")
@@ -483,11 +483,10 @@ def main():
     for model in args.models:
         model_results = results[model]
         correct = sum(1 for r in model_results if r.final_answer_correct)
-        avg_reasoning = sum(r.reasoning_quality for r in model_results) / len(model_results) if model_results else 0
         avg_plan = sum(r.plan_correctness for r in model_results) / len(model_results) if model_results else 0
         total = len(model_results)
         acc = correct / total if total > 0 else 0
-        print(f"{model:30s}: Acc={acc:.2%}, Reasoning={avg_reasoning:.2f}/3, Plan={avg_plan:.2%}")
+        print(f"{model:30s}: Acc={acc:.2%}, Plan={avg_plan:.2%}")
 
 
 if __name__ == "__main__":
