@@ -33,12 +33,12 @@ Three evaluation tracks:
 
 ### Summary Table
 
-| Model | Code Gen | Tool Selection | Params Accuracy | Agent Accuracy | Reasoning Score |
-|-------|----------|---------------|-----------------|---------------|-----------------|
-| qwen3.6:27b | 80% | 84.62% | 84.62% | **100%** | 0.3/3 |
-| qwen3.6:35b-a3b | 70% | 84.62% | 84.62% | **100%** | 1.8/3 |
-| qwen3-coder:30b | 80% | 76.92% | 69.23% | 80% | **2.8/3** |
-| deepseek-coder:33b | **90%** | 84.62% | 69.23% | 10% | 1.8/3 |
+| Model | Code Gen | Tool Selection | Params Accuracy | Agent Accuracy |
+|-------|----------|---------------|-----------------|---------------|
+| qwen3.6:27b | 80% | 84.62% | 84.62% | **100%** |
+| qwen3.6:35b-a3b | 70% | 84.62% | 84.62% | **100%** |
+| qwen3-coder:30b | 80% | 76.92% | 69.23% | 80% |
+| deepseek-coder:33b | **90%** | 84.62% | 69.23% | 10% |
 
 ![Model Performance Across All Benchmarks](images/chart_all_metrics.png)
 
@@ -62,7 +62,7 @@ qwen3.6:27b and qwen3.6:35b-a3b both scored 100% on answer accuracy across 10 mu
 
 That last number is not a typo. deepseek-coder:33b, despite being the best pure code generator in this evaluation, essentially cannot do multi-step agentic reasoning. It got 1 out of 10 tasks correct. This is a known characteristic of models that are heavily fine-tuned for code completion: they optimize for producing syntactically correct code given a clear prompt, but they struggle when the task requires planning across multiple steps, maintaining state, and reasoning about intermediate outputs.
 
-There is one nuance worth noting in the qwen3.6 agent results. Both models hit 100% answer accuracy, but their reasoning scores diverge: qwen3.6:27b averaged 0.3/3.0 while qwen3.6:35b-a3b averaged 1.8/3.0. The 27b model is arriving at correct answers but often through shallow or poorly structured reasoning. The 35b-a3b model reasons more coherently to get there. For tasks where you need to audit or trust the reasoning chain, not just the final answer, the 35b-a3b is the better choice.
+Both qwen3.6 models hit 100% answer accuracy across all 10 multi-step tasks, demonstrating strong agent capabilities.
 
 ![Agent Task Accuracy — 10 Multi-Step Tasks](images/chart_agent_spotlight.png)
 
@@ -74,11 +74,11 @@ There is one nuance worth noting in the qwen3.6 agent results. Both models hit 1
 
 **If you're building a coding agent** that needs to use tools, plan across steps, and complete tasks autonomously, use `qwen3.6:27b`. It's the strongest all-rounder: 80% code gen, 84.62% tool calling with correct parameters, and 100% agent accuracy. On CPU-only hardware it runs slower than the MoE models, but the capability profile is the right one for agentic work.
 
-**If you care about reasoning quality** in addition to task completion, and you have the memory headroom, `qwen3.6:35b-a3b` is worth considering. Same agent accuracy as the 27b, better reasoning scores (1.8 vs 0.3), and it's actually faster on CPU because of the MoE architecture activating only ~3B parameters per forward pass. The tradeoff is slightly lower code generation accuracy (70% vs 80%).
+**If you have the memory headroom**, `qwen3.6:35b-a3b` is worth considering. Same agent accuracy as the 27b, and it's actually faster on CPU because of the MoE architecture activating only ~3B parameters per forward pass. The tradeoff is slightly lower code generation accuracy (70% vs 80%).
 
 **If you're building a pure code generation pipeline** with no agentic component, `deepseek-coder:33b` is the best option at 90%. Just don't put it in an agent loop.
 
-**If you want the best reasoning quality score** with solid balanced performance, `qwen3-coder:30b` is interesting. It scored 2.8/3.0 on reasoning quality, the highest of any model, with 80% code gen and 80% agent accuracy. It's not the top performer in any single category but it's the most consistent.
+**If you want balanced performance across all dimensions**, `qwen3-coder:30b` is interesting. With 80% code gen and 80% agent accuracy, it's not the top performer in any single category but it's the most consistent.
 
 ![Which Model for Which Use Case?](images/chart_recommendation_grid.png)
 
@@ -171,9 +171,9 @@ Neo will handle the implementation end to end: writing the code, running it, fix
 For a local coding agent system on CPU hardware:
 
 - **Best all-rounder:** `qwen3.6:27b`
-- **Best if you need reasoning transparency:** `qwen3.6:35b-a3b`
+- **Best for memory-constrained systems:** `qwen3.6:35b-a3b` (MoE architecture)
 - **Best pure code generator:** `deepseek-coder:33b` (but keep it out of agent loops)
-- **Best balanced reasoning quality:** `qwen3-coder:30b`
+- **Best balanced performance:** `qwen3-coder:30b`
 
 The qwen3.6 models are the right choice for anything agentic. The deepseek-coder result is a useful reminder that benchmark performance on code generation does not predict performance on the kinds of tasks that actually show up in agent workflows.
 
