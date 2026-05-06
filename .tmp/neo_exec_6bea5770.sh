@@ -1,0 +1,1 @@
+cd /root/local_coding_eval && git init && git add . && git commit -m "Add local LLM coding evaluation suite with corrected qwen3.6 scores"

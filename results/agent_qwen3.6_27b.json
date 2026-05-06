@@ -1,0 +1,177 @@
+{
+  "model": "qwen3.6:27b",
+  "total_tasks": 10,
+  "correct_answers": 10,
+  "answer_accuracy": 1.0,
+  "avg_reasoning_score": 0.3,
+  "avg_plan_score": 0.1,
+  "results": [
+    {
+      "task_id": "agent_1",
+      "model": "qwen3.6:27b",
+      "prompt": "A store is having a sale where all items are 20% off. If a customer buys a $150 item and a $80 item, and there's an additional 8% sales tax, what is the final total?",
+      "expected_steps": [
+        "calculate discount on first item",
+        "calculate discount on second item",
+        "sum discounted prices",
+        "calculate tax",
+        "add tax to total"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.1009066104889,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_2",
+      "model": "qwen3.6:27b",
+      "prompt": "A train travels 120 km in 2 hours, then stops for 30 minutes, then continues for another 180 km in 3 hours. What is the average speed for the entire journey (excluding stop time)?",
+      "expected_steps": [
+        "calculate total distance",
+        "calculate total moving time",
+        "divide distance by time"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.1018707752228,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_3",
+      "model": "qwen3.6:27b",
+      "prompt": "You have $500 to invest. Option A gives 5% annual return compounded monthly. Option B gives 4.8% annual return compounded quarterly. Which option gives more money after 2 years, and by how much?",
+      "expected_steps": [
+        "calculate compound interest for option A",
+        "calculate compound interest for option B",
+        "compare results",
+        "calculate difference"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.10092401504517,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_4",
+      "model": "qwen3.6:27b",
+      "prompt": "A rectangular garden is 15 meters long and 8 meters wide. You want to build a path around it that is 1 meter wide. What is the area of the path only?",
+      "expected_steps": [
+        "calculate garden area",
+        "calculate outer dimensions",
+        "calculate total area with path",
+        "subtract garden area from total"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.10098147392273,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_5",
+      "model": "qwen3.6:27b",
+      "prompt": "If 8 workers can build a wall in 10 days, how many days will it take 5 workers to build the same wall, assuming they work at the same rate?",
+      "expected_steps": [
+        "calculate total work in worker-days",
+        "divide by new number of workers"
+      ],
+      "predicted_steps": [
+        "**Calculate the total amount of work required:**\n    First, determine the total \"worker-days\" needed to build the wall.\n    $$8 \\text{ workers} \\times 10 \\text{ days} = 80 \\text{ worker-days}$$\n    This means the wall requires 80 units of labor to complete.",
+        "**Calculate the time for the new group of workers:**\n    Divide the total work by the new number of workers (5).\n    $$80 \\text{ worker-days} / 5 \\text{ workers} = 16 \\text{ days}$$\n\n**Answer:** 16 days."
+      ],
+      "reasoning_quality": 3,
+      "plan_correctness": 1.0,
+      "final_answer_correct": true,
+      "response_time": 246.50170254707336,
+      "raw_response": "It will take **16 days**.\n\nHere is the step-by-step breakdown:\n\n1.  **Calculate the total amount of work required:**\n    First, determine the total \"worker-days\" needed to build the wall.\n    $$8 \\text{ workers} \\times 10 \\text{ days} = 80 \\text{ worker-days}$$\n    This means the wall requires 80 units of labor to complete.\n\n2.  **Calculate the time for the new group of workers:**\n    Divide the total work by the new number of workers (5).\n    $$80 \\text{ worker-days} / 5 \\text{ workers} = 16 \\text{ days}$$\n\n**Answer:** 16 days."
+    },
+    {
+      "task_id": "agent_6",
+      "model": "qwen3.6:27b",
+      "prompt": "A mixture contains alcohol and water in the ratio 3:2. If 5 liters of alcohol is added, the ratio becomes 2:1. What was the original volume of the mixture?",
+      "expected_steps": [
+        "set up equation for original mixture",
+        "set up equation after adding alcohol",
+        "solve for original volume"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.1038010120392,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_7",
+      "model": "qwen3.6:27b",
+      "prompt": "You need to schedule 3 tasks: Task A takes 2 hours, Task B takes 3 hours, Task C takes 1 hour. Task B depends on Task A. Task C can run anytime. What is the minimum time to complete all tasks if you can only do one at a time?",
+      "expected_steps": [
+        "identify dependencies",
+        "determine order",
+        "sum durations"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.10102581977844,
+      "raw_response": ""
+    },
+    {
+      "task_id": "agent_8",
+      "model": "qwen3.6:27b",
+      "prompt": "A car travels from City A to City B at 60 km/h and returns at 40 km/h. The distance between cities is 120 km. What is the average speed for the entire round trip?",
+      "expected_steps": [
+        "calculate time to go",
+        "calculate time to return",
+        "calculate total distance",
+        "divide total distance by total time"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.10097336769104,
+      "raw_response": ""
+    },
+    {
+      "task_id": "complex_agent_1",
+      "model": "qwen3.6:27b",
+      "prompt": "You are planning a project with the following constraints:\n- Task 1: 3 days (must be done first)\n- Task 2: 2 days (depends on Task 1)\n- Task 3: 4 days (depends on Task 1)\n- Task 4: 2 days (depends on Task 2 and Task 3)\n- Task 5: 1 day (depends on Task 4)\n\nYou have 2 workers who can work on different tasks simultaneously if dependencies allow.\nWhat is the minimum time to complete the project?",
+      "expected_steps": [
+        "identify critical path",
+        "schedule parallel tasks",
+        "calculate total duration"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.1008517742157,
+      "raw_response": ""
+    },
+    {
+      "task_id": "complex_agent_2",
+      "model": "qwen3.6:27b",
+      "prompt": "A company produces two products X and Y.\n- Product X requires 2 hours of machine time and 3 hours of labor, profit $50\n- Product Y requires 1 hour of machine time and 4 hours of labor, profit $40\n- Available: 100 machine hours, 180 labor hours\n\nWhat is the maximum profit achievable?",
+      "expected_steps": [
+        "set up constraints",
+        "set up objective function",
+        "find optimal solution"
+      ],
+      "predicted_steps": [],
+      "reasoning_quality": 0,
+      "plan_correctness": 0.0,
+      "final_answer_correct": true,
+      "response_time": 300.101096868515,
+      "raw_response": ""
+    }
+  ]
+}

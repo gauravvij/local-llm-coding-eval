@@ -1,0 +1,246 @@
+{
+  "model": "deepseek-coder:33b",
+  "total_tasks": 13,
+  "correct_tools": 11,
+  "correct_params": 9,
+  "tool_accuracy": 0.8461538461538461,
+  "params_accuracy": 0.6923076923076923,
+  "results": [
+    {
+      "task_id": "tool_1",
+      "model": "deepseek-coder:33b",
+      "prompt": "What's the weather like in New York?",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "New York"
+      },
+      "predicted_tool": "get_weather",
+      "predicted_params": {
+        "location": "New York"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 18.453025817871094,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"New York\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_2",
+      "model": "deepseek-coder:33b",
+      "prompt": "Search for information about Python programming",
+      "expected_tool": "search_web",
+      "expected_params": {
+        "query": "Python programming"
+      },
+      "predicted_tool": "search_web",
+      "predicted_params": {
+        "query": "Python programming",
+        "num_results": 5
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 8.186972856521606,
+      "raw_response": "{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"Python programming\",\n        \"num_results\": 5\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_3",
+      "model": "deepseek-coder:33b",
+      "prompt": "Calculate 15 * 23 + 7",
+      "expected_tool": "calculate",
+      "expected_params": {
+        "expression": "15 * 23 + 7"
+      },
+      "predicted_tool": "calculate",
+      "predicted_params": {
+        "expression": "15 * 23 + 7"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 7.711948871612549,
+      "raw_response": "{\n    \"name\": \"calculate\",\n    \"parameters\": {\n        \"expression\": \"15 * 23 + 7\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_4",
+      "model": "deepseek-coder:33b",
+      "prompt": "Send an email to john@example.com with subject 'Meeting' and body 'See you at 3pm'",
+      "expected_tool": "send_email",
+      "expected_params": {
+        "to": "john@example.com",
+        "subject": "Meeting",
+        "body": "See you at 3pm"
+      },
+      "predicted_tool": "send_email",
+      "predicted_params": {
+        "to": "john@example.com",
+        "subject": "Meeting",
+        "body": "See you at 3pm"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 12.155886173248291,
+      "raw_response": "{\n    \"name\": \"send_email\",\n    \"parameters\": {\n        \"to\": \"john@example.com\",\n        \"subject\": \"Meeting\",\n        \"body\": \"See you at 3pm\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_5",
+      "model": "deepseek-coder:33b",
+      "prompt": "Set a reminder to buy groceries tomorrow at 5pm",
+      "expected_tool": "set_reminder",
+      "expected_params": {
+        "task": "buy groceries",
+        "time": "tomorrow at 5pm"
+      },
+      "predicted_tool": "set_reminder",
+      "predicted_params": {
+        "task": "Buy Groceries",
+        "time": "Tomorrow at 5pm"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 10.755040645599365,
+      "raw_response": "{\n    \"name\": \"set_reminder\",\n    \"parameters\": {\n        \"task\": \"Buy Groceries\",\n        \"time\": \"Tomorrow at 5pm\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_6",
+      "model": "deepseek-coder:33b",
+      "prompt": "What's the current stock price of AAPL?",
+      "expected_tool": "get_stock_price",
+      "expected_params": {
+        "symbol": "AAPL"
+      },
+      "predicted_tool": "get_stock_price",
+      "predicted_params": {
+        "symbol": "AAPL"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 8.863788604736328,
+      "raw_response": "{\n    \"name\": \"get_stock_price\",\n    \"parameters\": {\n        \"symbol\": \"AAPL\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_7",
+      "model": "deepseek-coder:33b",
+      "prompt": "Translate 'Hello, how are you?' to Spanish",
+      "expected_tool": "translate_text",
+      "expected_params": {
+        "text": "Hello, how are you?",
+        "target_language": "Spanish"
+      },
+      "predicted_tool": "translate_text",
+      "predicted_params": {
+        "text": "Hello, how are you?",
+        "target_language": "Spanish"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 10.328622102737427,
+      "raw_response": "{\n    \"name\": \"translate_text\",\n    \"parameters\": {\n        \"text\": \"Hello, how are you?\",\n        \"target_language\": \"Spanish\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_8",
+      "model": "deepseek-coder:33b",
+      "prompt": "Create a calendar event titled 'Team Meeting' on 2024-12-25 at 10:00",
+      "expected_tool": "create_calendar_event",
+      "expected_params": {
+        "title": "Team Meeting",
+        "date": "2024-12-25",
+        "time": "10:00"
+      },
+      "predicted_tool": "create_calendar_event",
+      "predicted_params": {
+        "title": "Team Meeting",
+        "date": "2024-12-25",
+        "time": "10:00"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 13.137949228286743,
+      "raw_response": "{\n    \"name\": \"create_calendar_event\",\n    \"parameters\": {\n        \"title\": \"Team Meeting\",\n        \"date\": \"2024-12-25\",\n        \"time\": \"10:00\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_9",
+      "model": "deepseek-coder:33b",
+      "prompt": "Get the weather in Tokyo in Fahrenheit",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "Tokyo",
+        "unit": "fahrenheit"
+      },
+      "predicted_tool": "get_weather",
+      "predicted_params": {
+        "location": "Tokyo",
+        "unit": "fahrenheit"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 9.021388053894043,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"Tokyo\",\n        \"unit\": \"fahrenheit\"\n    }\n}\n"
+    },
+    {
+      "task_id": "tool_10",
+      "model": "deepseek-coder:33b",
+      "prompt": "Search for 'machine learning tutorials' and return 10 results",
+      "expected_tool": "search_web",
+      "expected_params": {
+        "query": "machine learning tutorials",
+        "num_results": 10
+      },
+      "predicted_tool": "search_web",
+      "predicted_params": {
+        "query": "'machine learning tutorials'",
+        "num_results": 10
+      },
+      "correct_tool": true,
+      "correct_params": false,
+      "response_time": 9.196037530899048,
+      "raw_response": "{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"'machine learning tutorials'\",\n        \"num_results\": 10\n    }\n}\n"
+    },
+    {
+      "task_id": "complex_1",
+      "model": "deepseek-coder:33b",
+      "prompt": "I need to schedule a meeting with the team. Create a calendar event for 'Sprint Planning' on January 15th at 2pm, and send an email to team@company.com with the meeting details.",
+      "expected_tool": "create_calendar_event",
+      "expected_params": {
+        "title": "Sprint Planning",
+        "date": "January 15th",
+        "time": "2pm"
+      },
+      "predicted_tool": null,
+      "predicted_params": null,
+      "correct_tool": false,
+      "correct_params": false,
+      "response_time": 26.692725658416748,
+      "raw_response": "{\n    \"name\": \"create_calendar_event\",\n    \"parameters\": {\n        \"title\": \"Sprint Planning\",\n        \"date\": \"January 15th\",\n        \"time\": \"2pm\"\n    }\n}\n\n{\n    \"name\": \"send_email\",\n    \"parameters\": {\n        \"to\": \"team@company.com\",\n        \"subject\": \"Sprint Planning Meeting Details\",\n        \"body\": \"The Sprint Planning meeting is scheduled for January 15th at 2pm.\"\n    }\n}\n"
+    },
+    {
+      "task_id": "complex_2",
+      "model": "deepseek-coder:33b",
+      "prompt": "I'm planning a trip to Paris. What's the weather there? Also, search for best restaurants in Paris.",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "Paris"
+      },
+      "predicted_tool": null,
+      "predicted_params": null,
+      "correct_tool": false,
+      "correct_params": false,
+      "response_time": 15.452046155929565,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"Paris\"\n    }\n}\n\n{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"best restaurants in Paris\",\n        \"num_results\": 5\n    }\n}\n"
+    },
+    {
+      "task_id": "complex_3",
+      "model": "deepseek-coder:33b",
+      "prompt": "Calculate the total cost: 5 items at $12.99 each plus 8% tax",
+      "expected_tool": "calculate",
+      "expected_params": {
+        "expression": "5 * 12.99 * 1.08"
+      },
+      "predicted_tool": "calculate",
+      "predicted_params": {
+        "expression": "(5 * 12.99) + ((5 * 12.99) * 0.08)"
+      },
+      "correct_tool": true,
+      "correct_params": false,
+      "response_time": 11.57373309135437,
+      "raw_response": "{\n    \"name\": \"calculate\",\n    \"parameters\": {\n        \"expression\": \"(5 * 12.99) + ((5 * 12.99) * 0.08)\"\n    }\n}\n"
+    }
+  ]
+}

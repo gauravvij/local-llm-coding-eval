@@ -1,0 +1,245 @@
+{
+  "model": "qwen3.6:27b",
+  "total_tasks": 13,
+  "correct_tools": 11,
+  "correct_params": 11,
+  "tool_accuracy": 0.8461538461538461,
+  "params_accuracy": 0.8461538461538461,
+  "results": [
+    {
+      "task_id": "tool_1",
+      "model": "qwen3.6:27b",
+      "prompt": "What's the weather like in New York?",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "New York"
+      },
+      "predicted_tool": "get_weather",
+      "predicted_params": {
+        "location": "New York"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 71.15244460105896,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"New York\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_2",
+      "model": "qwen3.6:27b",
+      "prompt": "Search for information about Python programming",
+      "expected_tool": "search_web",
+      "expected_params": {
+        "query": "Python programming"
+      },
+      "predicted_tool": "search_web",
+      "predicted_params": {
+        "query": "Python programming"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 52.78994417190552,
+      "raw_response": "{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"Python programming\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_3",
+      "model": "qwen3.6:27b",
+      "prompt": "Calculate 15 * 23 + 7",
+      "expected_tool": "calculate",
+      "expected_params": {
+        "expression": "15 * 23 + 7"
+      },
+      "predicted_tool": "calculate",
+      "predicted_params": {
+        "expression": "15 * 23 + 7"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 180.59223413467407,
+      "raw_response": "{\n    \"name\": \"calculate\",\n    \"parameters\": {\n        \"expression\": \"15 * 23 + 7\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_4",
+      "model": "qwen3.6:27b",
+      "prompt": "Send an email to john@example.com with subject 'Meeting' and body 'See you at 3pm'",
+      "expected_tool": "send_email",
+      "expected_params": {
+        "to": "john@example.com",
+        "subject": "Meeting",
+        "body": "See you at 3pm"
+      },
+      "predicted_tool": "send_email",
+      "predicted_params": {
+        "to": "john@example.com",
+        "subject": "Meeting",
+        "body": "See you at 3pm"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 83.26127409934998,
+      "raw_response": "{\n    \"name\": \"send_email\",\n    \"parameters\": {\n        \"to\": \"john@example.com\",\n        \"subject\": \"Meeting\",\n        \"body\": \"See you at 3pm\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_5",
+      "model": "qwen3.6:27b",
+      "prompt": "Set a reminder to buy groceries tomorrow at 5pm",
+      "expected_tool": "set_reminder",
+      "expected_params": {
+        "task": "buy groceries",
+        "time": "tomorrow at 5pm"
+      },
+      "predicted_tool": "set_reminder",
+      "predicted_params": {
+        "task": "buy groceries",
+        "time": "tomorrow at 5pm"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 44.19081687927246,
+      "raw_response": "{\n    \"name\": \"set_reminder\",\n    \"parameters\": {\n        \"task\": \"buy groceries\",\n        \"time\": \"tomorrow at 5pm\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_6",
+      "model": "qwen3.6:27b",
+      "prompt": "What's the current stock price of AAPL?",
+      "expected_tool": "get_stock_price",
+      "expected_params": {
+        "symbol": "AAPL"
+      },
+      "predicted_tool": "get_stock_price",
+      "predicted_params": {
+        "symbol": "AAPL"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 35.876163959503174,
+      "raw_response": "{\n    \"name\": \"get_stock_price\",\n    \"parameters\": {\n        \"symbol\": \"AAPL\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_7",
+      "model": "qwen3.6:27b",
+      "prompt": "Translate 'Hello, how are you?' to Spanish",
+      "expected_tool": "translate_text",
+      "expected_params": {
+        "text": "Hello, how are you?",
+        "target_language": "Spanish"
+      },
+      "predicted_tool": "translate_text",
+      "predicted_params": {
+        "text": "Hello, how are you?",
+        "target_language": "Spanish"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 72.09391474723816,
+      "raw_response": "{\n    \"name\": \"translate_text\",\n    \"parameters\": {\n        \"text\": \"Hello, how are you?\",\n        \"target_language\": \"Spanish\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_8",
+      "model": "qwen3.6:27b",
+      "prompt": "Create a calendar event titled 'Team Meeting' on 2024-12-25 at 10:00",
+      "expected_tool": "create_calendar_event",
+      "expected_params": {
+        "title": "Team Meeting",
+        "date": "2024-12-25",
+        "time": "10:00"
+      },
+      "predicted_tool": "create_calendar_event",
+      "predicted_params": {
+        "title": "Team Meeting",
+        "date": "2024-12-25",
+        "time": "10:00"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 56.27172541618347,
+      "raw_response": "{\n    \"name\": \"create_calendar_event\",\n    \"parameters\": {\n        \"title\": \"Team Meeting\",\n        \"date\": \"2024-12-25\",\n        \"time\": \"10:00\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_9",
+      "model": "qwen3.6:27b",
+      "prompt": "Get the weather in Tokyo in Fahrenheit",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "Tokyo",
+        "unit": "fahrenheit"
+      },
+      "predicted_tool": "get_weather",
+      "predicted_params": {
+        "location": "Tokyo",
+        "unit": "fahrenheit"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 62.24744987487793,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"Tokyo\",\n        \"unit\": \"fahrenheit\"\n    }\n}"
+    },
+    {
+      "task_id": "tool_10",
+      "model": "qwen3.6:27b",
+      "prompt": "Search for 'machine learning tutorials' and return 10 results",
+      "expected_tool": "search_web",
+      "expected_params": {
+        "query": "machine learning tutorials",
+        "num_results": 10
+      },
+      "predicted_tool": "search_web",
+      "predicted_params": {
+        "query": "machine learning tutorials",
+        "num_results": 10
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 43.21424627304077,
+      "raw_response": "{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"machine learning tutorials\",\n        \"num_results\": 10\n    }\n}"
+    },
+    {
+      "task_id": "complex_1",
+      "model": "qwen3.6:27b",
+      "prompt": "I need to schedule a meeting with the team. Create a calendar event for 'Sprint Planning' on January 15th at 2pm, and send an email to team@company.com with the meeting details.",
+      "expected_tool": "create_calendar_event",
+      "expected_params": {
+        "title": "Sprint Planning",
+        "date": "January 15th",
+        "time": "2pm"
+      },
+      "predicted_tool": null,
+      "predicted_params": null,
+      "correct_tool": false,
+      "correct_params": false,
+      "response_time": 395.0260360240936,
+      "raw_response": "{\n    \"name\": \"create_calendar_event\",\n    \"parameters\": {\n        \"title\": \"Sprint Planning\",\n        \"date\": \"January 15th\",\n        \"time\": \"2pm\"\n    }\n},\n{\n    \"name\": \"send_email\",\n    \"parameters\": {\n        \"to\": \"team@company.com\",\n        \"subject\": \"Sprint Planning Meeting\",\n        \"body\": \"Hi Team,\\n\\nPlease join us for the Sprint Planning meeting scheduled for January 15th at 2pm.\\n\\nLooking forward to seeing you there!\\n\\nBest regards,\"\n    }\n}"
+    },
+    {
+      "task_id": "complex_2",
+      "model": "qwen3.6:27b",
+      "prompt": "I'm planning a trip to Paris. What's the weather there? Also, search for best restaurants in Paris.",
+      "expected_tool": "get_weather",
+      "expected_params": {
+        "location": "Paris"
+      },
+      "predicted_tool": null,
+      "predicted_params": null,
+      "correct_tool": false,
+      "correct_params": false,
+      "response_time": 73.73112177848816,
+      "raw_response": "{\n    \"name\": \"get_weather\",\n    \"parameters\": {\n        \"location\": \"Paris\"\n    }\n},\n{\n    \"name\": \"search_web\",\n    \"parameters\": {\n        \"query\": \"best restaurants in Paris\"\n    }\n}"
+    },
+    {
+      "task_id": "complex_3",
+      "model": "qwen3.6:27b",
+      "prompt": "Calculate the total cost: 5 items at $12.99 each plus 8% tax",
+      "expected_tool": "calculate",
+      "expected_params": {
+        "expression": "5 * 12.99 * 1.08"
+      },
+      "predicted_tool": "calculate",
+      "predicted_params": {
+        "expression": "5 * 12.99 * 1.08"
+      },
+      "correct_tool": true,
+      "correct_params": true,
+      "response_time": 63.725043058395386,
+      "raw_response": "{\n    \"name\": \"calculate\",\n    \"parameters\": {\n        \"expression\": \"5 * 12.99 * 1.08\"\n    }\n}"
+    }
+  ]
+}

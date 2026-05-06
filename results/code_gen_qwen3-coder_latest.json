@@ -1,0 +1,118 @@
+{
+  "model": "qwen3-coder:latest",
+  "total_tasks": 10,
+  "passed": 8,
+  "accuracy": 0.8,
+  "results": [
+    {
+      "task_id": "humaneval_1",
+      "model": "qwen3-coder:latest",
+      "prompt": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+      "generated_code": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False",
+      "expected_output": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                distance = abs(elem - elem2)\n                if distance < threshold:\n                    return True\n    return False\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 13.125103950500488,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_2",
+      "model": "qwen3-coder:latest",
+      "prompt": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other.\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+      "generated_code": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other.\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n    # Remove all spaces\n    cleaned = paren_string.replace(' ', '')\n    \n    result = []\n    balance = 0\n    start = 0\n    \n    for i, char in enumerate(cleaned):\n        if char == '(':\n            if balance == 0:\n                # Starting a new group\n                start = i\n            balance += 1\n        elif char == ')':\n            balance -= 1\n            if balance == 0:\n                # Ending current group\n                result.append(cleaned[start:i+1])\n    \n    return result",
+      "expected_output": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    paren_string = paren_string.replace(' ', '')\n    result = []\n    current = ''\n    depth = 0\n    for char in paren_string:\n        if char == '(':\n            depth += 1\n            current += char\n        elif char == ')':\n            depth -= 1\n            current += char\n            if depth == 0:\n                result.append(current)\n                current = ''\n    return result\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 28.270100593566895,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_3",
+      "model": "qwen3-coder:latest",
+      "prompt": "def truncate_number(number: float, decimals: int) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+      "generated_code": "def truncate_number(number: float, decimals: int) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n    return number % 1",
+      "expected_output": "def truncate_number(number: float, decimals: int = 0) -> float:\n    return round(number - int(number), decimals)\n",
+      "actual_output": "Traceback (most recent call last):\n  File \"/tmp/tmp9lw4_4wb.py\", line 20, in <module>\n    check(truncate_number)\n  File \"/tmp/tmp9lw4_4wb.py\", line 14, in check\n    assert abs(truncate_number(3.5) - 0.5) < 0.001\n               ^^^^^^^^^^^^^^^^^^^^\nTypeError: truncate_number() missing 1 required positional argument: 'decimals'",
+      "passed": false,
+      "execution_time": 13.719905614852905,
+      "error": "Traceback (most recent call last):\n  File \"/tmp/tmp9lw4_4wb.py\", line 20, in <module>\n    check(truncate_number)\n  File \"/tmp/tmp9lw4_4wb.py\", line 14, in check\n    assert abs(truncate_number(3.5) - 0.5) < 0.001\n               ^^^^^^^^^^^^^^^^^^^^\nTypeError: truncate_number() missing 1 required positional argument: 'decimals'"
+    },
+    {
+      "task_id": "humaneval_4",
+      "model": "qwen3-coder:latest",
+      "prompt": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account falls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+      "generated_code": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account falls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False",
+      "expected_output": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 16.212204694747925,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_5",
+      "model": "qwen3-coder:latest",
+      "prompt": "def sum_squares(lst: list) -> int:\n    \"\"\" Return sum of squares of all even numbers and cubes of all odd numbers in the list.\n    >>> sum_squares([1, 2, 3, 4])\n    100\n    \"\"\"\n",
+      "generated_code": "def sum_squares(lst: list) -> int:\n    \"\"\" Return sum of squares of all even numbers and cubes of all odd numbers in the list.\n    >>> sum_squares([1, 2, 3, 4])\n    100\n    \"\"\"\n    total = 0\n    for num in lst:\n        if num % 2 == 0:  # even number\n            total += num ** 2\n        else:  # odd number\n            total += num ** 3\n    return total",
+      "expected_output": "def sum_squares(lst: list) -> int:\n    total = 0\n    for num in lst:\n        if num % 2 == 0:\n            total += num ** 2\n        else:\n            total += num ** 3\n    return total\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 16.986510038375854,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_1",
+      "model": "qwen3-coder:latest",
+      "prompt": "Write a function to find the sum of all numbers in a list.\n\ndef sum_list(numbers):\n    \"\"\"\n    Return the sum of all numbers in the list.\n    >>> sum_list([1, 2, 3, 4])\n    10\n    >>> sum_list([])\n    0\n    \"\"\"\n",
+      "generated_code": "def sum_list(numbers):\n    \"\"\"\n    Return the sum of all numbers in the list.\n    >>> sum_list([1, 2, 3, 4])\n    10\n    >>> sum_list([])\n    0\n    \"\"\"\n    return sum(numbers)",
+      "expected_output": "def sum_list(numbers):\n    return sum(numbers)\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 10.007359504699707,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_2",
+      "model": "qwen3-coder:latest",
+      "prompt": "Write a function to check if a string is a palindrome.\n\ndef is_palindrome(s):\n    \"\"\"\n    Check if the string is a palindrome (reads same forwards and backwards).\n    >>> is_palindrome('racecar')\n    True\n    >>> is_palindrome('hello')\n    False\n    \"\"\"\n",
+      "generated_code": "def is_palindrome(s):\n    \"\"\"\n    Check if the string is a palindrome (reads same forwards and backwards).\n    >>> is_palindrome('racecar')\n    True\n    >>> is_palindrome('hello')\n    False\n    \"\"\"\n    # Convert to lowercase and remove non-alphanumeric characters\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    # Compare the string with its reverse\n    return cleaned == cleaned[::-1]\n\n# Alternative implementation using two pointers (more memory efficient)\ndef is_palindrome_v2(s):\n    \"\"\"\n    Check if the string is a palindrome using two pointers approach.\n    \"\"\"\n    # Convert to lowercase and remove non-alphanumeric characters\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    # Use two pointers from start and end\n    left, right = 0, len(cleaned) - 1\n    \n    while left < right:\n        if cleaned[left] != cleaned[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True\n\n# Test the function\nif __name__ == \"__main__\":\n    # Test cases\n    print(is_palindrome('racecar'))      # True\n    print(is_palindrome('hello'))        # False\n    print(is_palindrome('A man a plan a canal Panama'))  # True\n    print(is_palindrome('race a car'))   # False\n    print(is_palindrome(''))             # True (empty string)\n    print(is_palindrome('a'))            # True (single character)",
+      "expected_output": "def is_palindrome(s):\n    return s == s[::-1]\n",
+      "actual_output": "True\nFalse\nTrue\nFalse\nTrue\nTrue\nAll tests passed!",
+      "passed": true,
+      "execution_time": 20.656455516815186,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_3",
+      "model": "qwen3-coder:latest",
+      "prompt": "Write a function to find the factorial of a number.\n\ndef factorial(n):\n    \"\"\"\n    Return the factorial of n (n!).\n    >>> factorial(5)\n    120\n    >>> factorial(0)\n    1\n    \"\"\"\n",
+      "generated_code": "print(factorial(5))  # Output: 120\nprint(factorial(0))  # Output: 1\nprint(factorial(1))  # Output: 1\nprint(factorial(4))  # Output: 24",
+      "expected_output": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n",
+      "actual_output": "Traceback (most recent call last):\n  File \"/tmp/tmpk7u9loed.py\", line 1, in <module>\n    print(factorial(5))  # Output: 120\n          ^^^^^^^^^\nNameError: name 'factorial' is not defined",
+      "passed": false,
+      "execution_time": 17.306591749191284,
+      "error": "Traceback (most recent call last):\n  File \"/tmp/tmpk7u9loed.py\", line 1, in <module>\n    print(factorial(5))  # Output: 120\n          ^^^^^^^^^\nNameError: name 'factorial' is not defined"
+    },
+    {
+      "task_id": "mbpp_4",
+      "model": "qwen3-coder:latest",
+      "prompt": "Write a function to find the maximum element in a list.\n\ndef find_max(lst):\n    \"\"\"\n    Return the maximum element in the list.\n    >>> find_max([1, 5, 3, 9, 2])\n    9\n    >>> find_max([-5, -2, -10])\n    -2\n    \"\"\"\n",
+      "generated_code": "def find_max(lst):\n    \"\"\"\n    Return the maximum element in the list.\n    >>> find_max([1, 5, 3, 9, 2])\n    9\n    >>> find_max([-5, -2, -10])\n    -2\n    \"\"\"\n    if not lst:\n        raise ValueError(\"Cannot find maximum of an empty list\")\n    \n    if len(lst) == 1:\n        return lst[0]\n    \n    max_of_rest = find_max(lst[1:])\n    return lst[0] if lst[0] > max_of_rest else max_of_rest",
+      "expected_output": "def find_max(lst):\n    return max(lst)\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 19.443888664245605,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_5",
+      "model": "qwen3-coder:latest",
+      "prompt": "Write a function to count the frequency of each element in a list.\n\ndef count_frequency(lst):\n    \"\"\"\n    Return a dictionary with elements as keys and their frequencies as values.\n    >>> count_frequency([1, 2, 2, 3, 3, 3])\n    {1: 1, 2: 2, 3: 3}\n    >>> count_frequency([])\n    {}\n    \"\"\"\n",
+      "generated_code": "from collections import defaultdict\n\ndef count_frequency(lst):\n    \"\"\"\n    Return a dictionary with elements as keys and their frequencies as values.\n    >>> count_frequency([1, 2, 2, 3, 3, 3])\n    {1: 1, 2: 2, 3: 3}\n    >>> count_frequency([])\n    {}\n    \"\"\"\n    frequency = defaultdict(int)\n    for element in lst:\n        frequency[element] += 1\n    return dict(frequency)",
+      "expected_output": "def count_frequency(lst):\n    freq = {}\n    for item in lst:\n        freq[item] = freq.get(item, 0) + 1\n    return freq\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 25.06306791305542,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "model": "deepseek-coder:33b",
+  "total_tasks": 10,
+  "passed": 9,
+  "accuracy": 0.9,
+  "results": [
+    {
+      "task_id": "humaneval_1",
+      "model": "deepseek-coder:33b",
+      "prompt": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+      "generated_code": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    for i in range(len(numbers)):\n        for j in range(i+1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) <= threshold:\n                return True\n    return False",
+      "expected_output": "def has_close_elements(numbers: list[float], threshold: float) -> bool:\n    for idx, elem in enumerate(numbers):\n        for idx2, elem2 in enumerate(numbers):\n            if idx != idx2:\n                distance = abs(elem - elem2)\n                if distance < threshold:\n                    return True\n    return False\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 52.467872858047485,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_2",
+      "model": "deepseek-coder:33b",
+      "prompt": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other.\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+      "generated_code": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    paren_string = paren_string.replace(\" \", \"\")\n    result, start, count = [], 0, 0\n    \n    for i in range(len(paren_string)):\n        if paren_string[i] == '(':\n            count += 1\n        elif paren_string[i] == ')':\n            count -= 1\n        \n        if count == 0 and start != i+1:\n            result.append(paren_string[start:i+1])\n            start = i + 1\n    \n    return result\n\nprint(separate_paren_groups('( ) (( )) (( )( ))')) # ['()', '(())', '(()())']",
+      "expected_output": "from typing import List\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    paren_string = paren_string.replace(' ', '')\n    result = []\n    current = ''\n    depth = 0\n    for char in paren_string:\n        if char == '(':\n            depth += 1\n            current += char\n        elif char == ')':\n            depth -= 1\n            current += char\n            if depth == 0:\n                result.append(current)\n                current = ''\n    return result\n",
+      "actual_output": "['()', '(())', '(()())']\nAll tests passed!",
+      "passed": true,
+      "execution_time": 42.35932230949402,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_3",
+      "model": "deepseek-coder:33b",
+      "prompt": "def truncate_number(number: float, decimals: int) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5)\n    0.5\n    \"\"\"\n",
+      "generated_code": "def truncate_number(number: float, decimals: int) -> float:\n    \"\"\" Given a positive floating point number, it can be decomposed into\n    and integer part (largest integer smaller than given number) and decimals\n    (leftover part always smaller than 1).\n\n    Return the decimal part of the number.\n    >>> truncate_number(3.5, 1)\n    0.5\n    \"\"\"\n    return round(number - int(number), decimals)",
+      "expected_output": "def truncate_number(number: float, decimals: int = 0) -> float:\n    return round(number - int(number), decimals)\n",
+      "actual_output": "Traceback (most recent call last):\n  File \"/tmp/tmpln6d_kxo.py\", line 20, in <module>\n    check(truncate_number)\n  File \"/tmp/tmpln6d_kxo.py\", line 14, in check\n    assert abs(truncate_number(3.5) - 0.5) < 0.001\n               ^^^^^^^^^^^^^^^^^^^^\nTypeError: truncate_number() missing 1 required positional argument: 'decimals'",
+      "passed": false,
+      "execution_time": 28.68156361579895,
+      "error": "Traceback (most recent call last):\n  File \"/tmp/tmpln6d_kxo.py\", line 20, in <module>\n    check(truncate_number)\n  File \"/tmp/tmpln6d_kxo.py\", line 14, in check\n    assert abs(truncate_number(3.5) - 0.5) < 0.001\n               ^^^^^^^^^^^^^^^^^^^^\nTypeError: truncate_number() missing 1 required positional argument: 'decimals'"
+    },
+    {
+      "task_id": "humaneval_4",
+      "model": "deepseek-coder:33b",
+      "prompt": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    \"\"\" You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account falls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> below_zero([1, 2, 3])\n    False\n    >>> below_zero([1, 2, -4, 5])\n    True\n    \"\"\"\n",
+      "generated_code": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False",
+      "expected_output": "from typing import List\n\ndef below_zero(operations: List[int]) -> bool:\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 28.61556053161621,
+      "error": null
+    },
+    {
+      "task_id": "humaneval_5",
+      "model": "deepseek-coder:33b",
+      "prompt": "def sum_squares(lst: list) -> int:\n    \"\"\" Return sum of squares of all even numbers and cubes of all odd numbers in the list.\n    >>> sum_squares([1, 2, 3, 4])\n    100\n    \"\"\"\n",
+      "generated_code": "def sum_squares(lst):\n    return sum(i**2 if i%2 == 0 else i**3 for i in lst)",
+      "expected_output": "def sum_squares(lst: list) -> int:\n    total = 0\n    for num in lst:\n        if num % 2 == 0:\n            total += num ** 2\n        else:\n            total += num ** 3\n    return total\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 28.664171934127808,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_1",
+      "model": "deepseek-coder:33b",
+      "prompt": "Write a function to find the sum of all numbers in a list.\n\ndef sum_list(numbers):\n    \"\"\"\n    Return the sum of all numbers in the list.\n    >>> sum_list([1, 2, 3, 4])\n    10\n    >>> sum_list([])\n    0\n    \"\"\"\n",
+      "generated_code": "def sum_list(numbers):\n    return sum(numbers)",
+      "expected_output": "def sum_list(numbers):\n    return sum(numbers)\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 13.4973726272583,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_2",
+      "model": "deepseek-coder:33b",
+      "prompt": "Write a function to check if a string is a palindrome.\n\ndef is_palindrome(s):\n    \"\"\"\n    Check if the string is a palindrome (reads same forwards and backwards).\n    >>> is_palindrome('racecar')\n    True\n    >>> is_palindrome('hello')\n    False\n    \"\"\"\n",
+      "generated_code": "def is_palindrome(s):\n    \"\"\"\n    Check if the string is a palindrome (reads same forwards and backwards).\n    >>> is_palindrome('racecar')\n    True\n    >>> is_palindrome('hello')\n    False\n    \"\"\"\n    return s == s[::-1]",
+      "expected_output": "def is_palindrome(s):\n    return s == s[::-1]\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 17.097196102142334,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_3",
+      "model": "deepseek-coder:33b",
+      "prompt": "Write a function to find the factorial of a number.\n\ndef factorial(n):\n    \"\"\"\n    Return the factorial of n (n!).\n    >>> factorial(5)\n    120\n    >>> factorial(0)\n    1\n    \"\"\"\n",
+      "generated_code": "def factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    else:\n        return n * factorial(n-1)",
+      "expected_output": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 25.033462285995483,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_4",
+      "model": "deepseek-coder:33b",
+      "prompt": "Write a function to find the maximum element in a list.\n\ndef find_max(lst):\n    \"\"\"\n    Return the maximum element in the list.\n    >>> find_max([1, 5, 3, 9, 2])\n    9\n    >>> find_max([-5, -2, -10])\n    -2\n    \"\"\"\n",
+      "generated_code": "def find_max(lst):\n    \"\"\"\n    Return the maximum element in the list.\n    >>> find_max([1, 5, 3, 9, 2])\n    9\n    >>> find_max([-5, -2, -10])\n    -2\n    \"\"\"\n    max_element = lst[0]\n    for i in range(1, len(lst)):\n        if lst[i] > max_element:\n            max_element = lst[i]\n    return max_element",
+      "expected_output": "def find_max(lst):\n    return max(lst)\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 27.08113193511963,
+      "error": null
+    },
+    {
+      "task_id": "mbpp_5",
+      "model": "deepseek-coder:33b",
+      "prompt": "Write a function to count the frequency of each element in a list.\n\ndef count_frequency(lst):\n    \"\"\"\n    Return a dictionary with elements as keys and their frequencies as values.\n    >>> count_frequency([1, 2, 2, 3, 3, 3])\n    {1: 1, 2: 2, 3: 3}\n    >>> count_frequency([])\n    {}\n    \"\"\"\n",
+      "generated_code": "def count_frequency(lst):\n    freq = {}\n    for item in lst:\n        if (item in freq):\n            freq[item] += 1\n        else:\n            freq[item] = 1\n    return freq",
+      "expected_output": "def count_frequency(lst):\n    freq = {}\n    for item in lst:\n        freq[item] = freq.get(item, 0) + 1\n    return freq\n",
+      "actual_output": "All tests passed!",
+      "passed": true,
+      "execution_time": 24.716083526611328,
+      "error": null
+    }
+  ]
+}
