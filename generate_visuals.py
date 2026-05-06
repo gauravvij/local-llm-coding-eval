@@ -40,7 +40,6 @@ data = {
     "Tool Selection (%)":   [84.62, 84.62, 76.92, 84.62],
     "Param Accuracy (%)":   [84.62, 84.62, 69.23, 69.23],
     "Agent Accuracy (%)":   [100,   100,   80,    10   ],
-    "Reasoning Score (/3)": [0.3,   1.8,   2.8,   1.8  ],
 }
 
 # ── Shared style helpers ──────────────────────────────────────────────────────
@@ -128,8 +127,7 @@ def chart_grouped_bars():
 # Chart 2 — Radar / spider chart
 # ═══════════════════════════════════════════════════════════════════════════════
 def chart_radar():
-    categories = ["Code Gen", "Tool Select", "Param Acc", "Agent Acc", "Reasoning"]
-    # Normalise all to 0-100 (reasoning /3 → ×33.33)
+    categories = ["Code Gen", "Tool Select", "Param Acc", "Agent Acc"]
     norm_data = []
     for i in range(len(MODELS)):
         norm_data.append([
@@ -137,7 +135,6 @@ def chart_radar():
             data["Tool Selection (%)"][i],
             data["Param Accuracy (%)"][i],
             data["Agent Accuracy (%)"][i],
-            data["Reasoning Score (/3)"][i] / 3 * 100,
         ])
 
     N      = len(categories)
@@ -233,7 +230,6 @@ def chart_recommendation_grid():
     use_cases = [
         "Coding Agent\n(tools + planning)",
         "Pure Code\nGeneration",
-        "Reasoning\nTransparency",
         "Balanced\nAll-Round",
         "CPU Speed\n(MoE efficiency)",
     ]
@@ -243,7 +239,6 @@ def chart_recommendation_grid():
         # qwen3.6:27b  qwen3.6:35b-a3b  qwen3-coder:30b  deepseek-coder:33b
         [3,            3,                2,                0],   # Coding Agent
         [2,            1,                2,                3],   # Pure Code Gen
-        [1,            2,                3,                2],   # Reasoning Transparency
         [3,            2,                3,                1],   # Balanced All-Round
         [1,            3,                2,                1],   # CPU Speed
     ])
@@ -251,7 +246,6 @@ def chart_recommendation_grid():
     labels = np.array([
         ["Best",  "Best", "Good", "Poor"],
         ["Good",  "OK",   "Good", "Best"],
-        ["OK",    "Good", "Best", "Good"],
         ["Best",  "Good", "Best", "OK"  ],
         ["OK",    "Best", "Good", "OK"  ],
     ])
